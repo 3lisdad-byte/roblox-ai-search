@@ -17,8 +17,6 @@ jobs:
       - name: Extract project
         run: |
           unzip -o roblox_ai_search_mvp.zip
-          echo "Project extracted"
-          ls -la
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -26,6 +24,10 @@ jobs:
           flutter-version: '3.35.7'
           channel: stable
           cache: true
+
+      - name: Recreate Android project
+        working-directory: roblox_ai_search
+        run: flutter create --platforms=android .
 
       - name: Install dependencies
         working-directory: roblox_ai_search
